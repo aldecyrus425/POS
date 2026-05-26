@@ -53,6 +53,20 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
+      "POS.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.8",
+          "POS.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/POS.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/POS.Application.dll": {}
+        }
+      },
       "POS.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v10.0",
@@ -158,6 +172,11 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "POS.Application/1.0.0": {
+      "type": "project",
+      "path": "../POS.Application/POS.Application.csproj",
+      "msbuildProject": "../POS.Application/POS.Application.csproj"
+    },
     "POS.Domain/1.0.0": {
       "type": "project",
       "path": "../POS.Domain/POS.Domain.csproj",
@@ -168,7 +187,7 @@
     "net10.0": [
       "Microsoft.Extensions.Configuration.Abstractions >= 10.0.8",
       "Microsoft.Extensions.DependencyInjection.Abstractions >= 10.0.8",
-      "POS.Domain >= 1.0.0"
+      "POS.Application >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -205,8 +224,8 @@
           "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {
-            "C:\\Users\\aldec\\source\\repos\\POS\\POS.Domain\\POS.Domain.csproj": {
-              "projectPath": "C:\\Users\\aldec\\source\\repos\\POS\\POS.Domain\\POS.Domain.csproj"
+            "C:\\Users\\aldec\\source\\repos\\POS\\POS.Application\\POS.Application.csproj": {
+              "projectPath": "C:\\Users\\aldec\\source\\repos\\POS\\POS.Application\\POS.Application.csproj"
             }
           }
         }

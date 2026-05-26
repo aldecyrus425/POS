@@ -2,25 +2,6 @@
   "version": 4,
   "targets": {
     "net10.0": {
-      "Microsoft.Extensions.Configuration.Abstractions/10.0.8": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Primitives": "10.0.8"
-        },
-        "compile": {
-          "lib/net10.0/Microsoft.Extensions.Configuration.Abstractions.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net10.0/Microsoft.Extensions.Configuration.Abstractions.dll": {
-            "related": ".xml"
-          }
-        },
-        "build": {
-          "buildTransitive/net8.0/_._": {}
-        }
-      },
       "Microsoft.Extensions.DependencyInjection.Abstractions/10.0.8": {
         "type": "package",
         "compile": {
@@ -30,22 +11,6 @@
         },
         "runtime": {
           "lib/net10.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
-            "related": ".xml"
-          }
-        },
-        "build": {
-          "buildTransitive/net8.0/_._": {}
-        }
-      },
-      "Microsoft.Extensions.Primitives/10.0.8": {
-        "type": "package",
-        "compile": {
-          "lib/net10.0/Microsoft.Extensions.Primitives.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net10.0/Microsoft.Extensions.Primitives.dll": {
             "related": ".xml"
           }
         },
@@ -65,54 +30,10 @@
         "runtime": {
           "bin/placeholder/POS.Domain.dll": {}
         }
-      },
-      "POS.Infrastructure/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v10.0",
-        "dependencies": {
-          "Microsoft.Extensions.Configuration.Abstractions": "10.0.8",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.8",
-          "POS.Domain": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/POS.Infrastructure.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/POS.Infrastructure.dll": {}
-        }
       }
     }
   },
   "libraries": {
-    "Microsoft.Extensions.Configuration.Abstractions/10.0.8": {
-      "sha512": "I63esIFbL3h5pSt7gXpXOlmcwDmYBUoYNEglKfDPFUqtYvSV84f2l28hO2lfVXsV0wdlplgAM7IVz16matapSg==",
-      "type": "package",
-      "path": "microsoft.extensions.configuration.abstractions/10.0.8",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "PACKAGE.md",
-        "THIRD-PARTY-NOTICES.TXT",
-        "buildTransitive/net461/Microsoft.Extensions.Configuration.Abstractions.targets",
-        "buildTransitive/net462/_._",
-        "buildTransitive/net8.0/_._",
-        "buildTransitive/netcoreapp2.0/Microsoft.Extensions.Configuration.Abstractions.targets",
-        "lib/net10.0/Microsoft.Extensions.Configuration.Abstractions.dll",
-        "lib/net10.0/Microsoft.Extensions.Configuration.Abstractions.xml",
-        "lib/net462/Microsoft.Extensions.Configuration.Abstractions.dll",
-        "lib/net462/Microsoft.Extensions.Configuration.Abstractions.xml",
-        "lib/net8.0/Microsoft.Extensions.Configuration.Abstractions.dll",
-        "lib/net8.0/Microsoft.Extensions.Configuration.Abstractions.xml",
-        "lib/net9.0/Microsoft.Extensions.Configuration.Abstractions.dll",
-        "lib/net9.0/Microsoft.Extensions.Configuration.Abstractions.xml",
-        "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.dll",
-        "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.xml",
-        "microsoft.extensions.configuration.abstractions.10.0.8.nupkg.sha512",
-        "microsoft.extensions.configuration.abstractions.nuspec",
-        "useSharedDesignerContext.txt"
-      ]
-    },
     "Microsoft.Extensions.DependencyInjection.Abstractions/10.0.8": {
       "sha512": "21nbDV60SRPWGIivsyl6lqBeEJNG1sginhhfWgRrr3Ais7aQ12To25OAHQxgoiJkjqy1aQ6RxpZBGYuTi7Ge6A==",
       "type": "package",
@@ -144,50 +65,16 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.Primitives/10.0.8": {
-      "sha512": "OBPo4nYhMyIbtueoC10CBm6AGAbo/A9IV8QQ/6ryZS7VvmqpGT7hunazeHLxFawRzn3oLOq4jhqhpBX4tfswWQ==",
-      "type": "package",
-      "path": "microsoft.extensions.primitives/10.0.8",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "PACKAGE.md",
-        "THIRD-PARTY-NOTICES.TXT",
-        "buildTransitive/net461/Microsoft.Extensions.Primitives.targets",
-        "buildTransitive/net462/_._",
-        "buildTransitive/net8.0/_._",
-        "buildTransitive/netcoreapp2.0/Microsoft.Extensions.Primitives.targets",
-        "lib/net10.0/Microsoft.Extensions.Primitives.dll",
-        "lib/net10.0/Microsoft.Extensions.Primitives.xml",
-        "lib/net462/Microsoft.Extensions.Primitives.dll",
-        "lib/net462/Microsoft.Extensions.Primitives.xml",
-        "lib/net8.0/Microsoft.Extensions.Primitives.dll",
-        "lib/net8.0/Microsoft.Extensions.Primitives.xml",
-        "lib/net9.0/Microsoft.Extensions.Primitives.dll",
-        "lib/net9.0/Microsoft.Extensions.Primitives.xml",
-        "lib/netstandard2.0/Microsoft.Extensions.Primitives.dll",
-        "lib/netstandard2.0/Microsoft.Extensions.Primitives.xml",
-        "microsoft.extensions.primitives.10.0.8.nupkg.sha512",
-        "microsoft.extensions.primitives.nuspec",
-        "useSharedDesignerContext.txt"
-      ]
-    },
     "POS.Domain/1.0.0": {
       "type": "project",
       "path": "../POS.Domain/POS.Domain.csproj",
       "msbuildProject": "../POS.Domain/POS.Domain.csproj"
-    },
-    "POS.Infrastructure/1.0.0": {
-      "type": "project",
-      "path": "../POS.Infrastructure/POS.Infrastructure.csproj",
-      "msbuildProject": "../POS.Infrastructure/POS.Infrastructure.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net10.0": [
       "Microsoft.Extensions.DependencyInjection.Abstractions >= 10.0.8",
-      "POS.Infrastructure >= 1.0.0"
+      "POS.Domain >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -224,8 +111,8 @@
           "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {
-            "C:\\Users\\aldec\\source\\repos\\POS\\POS.Infrastructure\\POS.Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\aldec\\source\\repos\\POS\\POS.Infrastructure\\POS.Infrastructure.csproj"
+            "C:\\Users\\aldec\\source\\repos\\POS\\POS.Domain\\POS.Domain.csproj": {
+              "projectPath": "C:\\Users\\aldec\\source\\repos\\POS\\POS.Domain\\POS.Domain.csproj"
             }
           }
         }
