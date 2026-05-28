@@ -26,9 +26,9 @@ namespace POS.Domain.Entities
         public DateTime? DeletedAt { get; private set; }
         public bool IsDeleted { get; private set; }
 
-        private Products() { }
+        protected Products() { }
 
-        public static Products CreateProducts(string barcode, string sku, string name, string description, int categoryId, int unitId, decimal costPrice, decimal sellingPrice, int reorderLevel, bool isTrackInventory, bool isActive, string imageUrl = null)
+        public Products(string barcode, string sku, string name, string description, int categoryId, int unitId, decimal costPrice, decimal sellingPrice, int reorderLevel, bool isTrackInventory, bool isActive, string imageUrl = null)
         {
             if (string.IsNullOrWhiteSpace(barcode))
                 throw new ArgumentException("Barcode is required.", nameof(barcode));
@@ -72,23 +72,20 @@ namespace POS.Domain.Entities
             if (reorderLevel < 0)
                 throw new ArgumentException("Reorder level must not be negative.", nameof(reorderLevel));
 
-            return new Products
-            {
-                Barcode = barcode.Trim(),
-                SKU = sku.Trim().ToUpper(),
-                Name = name.Trim(),
-                Description = description?.Trim(),
-                CategoryId = categoryId,
-                UnitId = unitId,
-                CostPrice = costPrice,
-                SellingPrice = sellingPrice,
-                ReorderLevel = reorderLevel,
-                IsTrackInventory = isTrackInventory,
-                IsActive = isActive,
-                ImageUrl = imageUrl?.Trim(),
-                CreatedAt = DateTime.Now,
-                IsDeleted = false
-            };
+            this.Barcode = barcode.Trim();
+            this.SKU = sku.Trim().ToUpper();
+            this.Name = name.Trim();
+            this.Description = description?.Trim();
+            this.CategoryId = categoryId;
+            this.UnitId = unitId;
+            this.CostPrice = costPrice;
+            this.SellingPrice = sellingPrice;
+            this.ReorderLevel = reorderLevel;
+            this.IsTrackInventory = isTrackInventory;
+            this.IsActive = isActive;
+            this.ImageUrl = imageUrl?.Trim();
+            this.CreatedAt = DateTime.Now;
+            this.IsDeleted = false;
         }
     }
 }
