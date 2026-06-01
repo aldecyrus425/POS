@@ -59,23 +59,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\aldec\\.nuget\\packages\\": {},
+    "C:\\Users\\admin\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\aldec\\source\\repos\\POS\\POS.Domain\\POS.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\admin\\source\\repos\\POS\\POS.Domain\\POS.Domain.csproj",
       "projectName": "POS.Domain",
-      "projectPath": "C:\\Users\\aldec\\source\\repos\\POS\\POS.Domain\\POS.Domain.csproj",
-      "packagesPath": "C:\\Users\\aldec\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\aldec\\source\\repos\\POS\\POS.Domain\\obj\\",
+      "projectPath": "C:\\Users\\admin\\source\\repos\\POS\\POS.Domain\\POS.Domain.csproj",
+      "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\admin\\source\\repos\\POS\\POS.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\aldec\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
