@@ -87,5 +87,25 @@ namespace POS.Domain.Entities
             this.CreatedAt = DateTime.Now;
             this.IsDeleted = false;
         }
+
+        public void DeleteProduct()
+        {
+            if (!IsActive)
+                return;
+
+            IsActive = false;
+            IsDeleted = true;
+            DeletedAt = DateTime.Now;
+        }
+
+        public void ReactivateProduct()
+        {
+            if (IsActive) 
+                return;
+
+            IsActive = true;
+            IsDeleted = false;
+            DeletedAt = null;
+        }
     }
 }

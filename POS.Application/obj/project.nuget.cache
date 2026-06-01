@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "+FXpdcT5XTA=",
+  "dgSpecHash": "VPduWJfRAmU=",
   "success": true,
-  "projectFilePath": "C:\\Users\\aldec\\source\\repos\\POS\\POS.Application\\POS.Application.csproj",
+  "projectFilePath": "C:\\Users\\admin\\source\\repos\\POS\\POS.Application\\POS.Application.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\aldec\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\10.0.8\\microsoft.extensions.dependencyinjection.abstractions.10.0.8.nupkg.sha512"
+    "C:\\Users\\admin\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\10.0.8\\microsoft.extensions.dependencyinjection.abstractions.10.0.8.nupkg.sha512"
   ],
   "logs": []
 }
