@@ -13,5 +13,20 @@ namespace POS.Domain.Entities
         public int BranchesId { get; private set; }
         public decimal QuantityOnHand { get; private set; }
         public DateTime UpdatedAt { get; private set; }
+
+        protected Stocks() { }
+
+        public Stocks(int productId, int branchId, decimal quantityOnHand)
+        {
+            if (productId < 0) throw new ArgumentOutOfRangeException("Invalid Product ID");
+
+            if (branchId < 0) throw new ArgumentOutOfRangeException("Invalid Product ID");
+
+            if (quantityOnHand < 0) throw new ArgumentOutOfRangeException("Quantity must not be negative");
+
+            ProductId = productId;
+            BranchesId = branchId;
+            QuantityOnHand = quantityOnHand;
+        }
     }
 }
