@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace POS.Application.DTO.RequestDTO
+namespace POS.Application.DTO.ResponseDTO
 {
-    public class ProductEncodingRequestDTO
+    public class ProductUpdateDetailsResponseDTO
     {
         public string Barcode { get; set; }
         public string SKU { get; set; }
@@ -18,6 +18,5 @@ namespace POS.Application.DTO.RequestDTO
         public int ReorderLevel { get; set; }
         public bool IsTrackInventory { get; set; }
         public bool isActive { get; set; }
-        public IFormFile Image { get; set; }
     }
 }
