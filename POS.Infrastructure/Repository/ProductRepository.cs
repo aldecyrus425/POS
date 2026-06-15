@@ -1,4 +1,5 @@
-﻿using POS.Application.Interfaces.Repository;
+﻿using Microsoft.EntityFrameworkCore;
+using POS.Application.Interfaces.Repository;
 using POS.Domain.Entities;
 using POS.Infrastructure.Persistence;
 using System;
@@ -16,9 +17,19 @@ namespace POS.Infrastructure.Repository
             _context = context;
         }
 
-        public async Task AddProduct(Products product)
+        public async Task AddProductAsync(Products product)
         {
             await _context.Product.AddAsync(product);
+        }
+
+        public async Task<Products?> GetProductByIDAsync(int id)
+        {
+            return await _context.Product.FirstOrDefaultAsync(p => p.ProductId == id);
+        }
+
+        public async Task SaveChangesAsync()
+        {
+            await _context.SaveChangesAsync();
         }
     }
 }
