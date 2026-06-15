@@ -143,19 +143,12 @@ namespace POS.Domain.Entities
             this.ReorderLevel = reorderLevel;
             this.IsTrackInventory = isTrackInventory;
             this.IsActive = isActive;
-            this.CreatedAt = DateTime.Now;
+            this.UpdatedAt = DateTime.Now;
             this.IsDeleted = false;
             if(!string.IsNullOrWhiteSpace(imageUrl))
                 this.ImageUrl = imageUrl.Trim();
         }
 
-        public void ChangeProductPicture(string imageUrl)
-        {
-            if (!string.IsNullOrEmpty(imageUrl) && imageUrl.Length > 255)
-                throw new ArgumentException("Image URL must not exceed 255 characters.", nameof(imageUrl));
-
-            this.ImageUrl = imageUrl?.Trim();
-        }
 
         public void DeleteProduct()
         {

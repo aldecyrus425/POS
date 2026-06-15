@@ -22,9 +22,12 @@ namespace POS.Infrastructure.Repository
             await _context.Product.AddAsync(product);
         }
 
-        public async Task<Products?> GetProductByIDAsync(int id)
+        public async Task<Products?> GetProductByIDWithDetailsAsync(int id)
         {
-            return await _context.Product.FirstOrDefaultAsync(p => p.ProductId == id);
+            return await _context.Product
+                .Include(p => p.Categories)
+                .Include(p => p.Units)
+                .FirstOrDefaultAsync(p => p.ProductId == id);
         }
 
         public async Task SaveChangesAsync()

@@ -10,12 +10,12 @@ using System.Text;
 
 namespace POS.Application.Services
 {
-    public class ProductEncoding : IProductEncoding
+    public class ProductEncodingService : IProductEncoding
     {
         private readonly IProductRepository _productRepository;
         private readonly IImageStorageService _imageStorageService;
 
-        public ProductEncoding(IProductRepository productRepository, IImageStorageService imageStorageService)
+        public ProductEncodingService(IProductRepository productRepository, IImageStorageService imageStorageService)
         {
             _productRepository = productRepository;
             _imageStorageService = imageStorageService;

@@ -1,13 +1,13 @@
-﻿using Microsoft.AspNetCore.Http;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace POS.Application.DTO.RequestDTO
 {
-    public class ProductUpdateDetailsRequestDTO
+    public class StockInItemRequestDTO
     {
         public int ProductId { get; set; }
-        public IFormFile? Image { get; set; }
+        public int Quantity { get; set; }
+        public decimal CostPrice { get; set; }
     }
 }

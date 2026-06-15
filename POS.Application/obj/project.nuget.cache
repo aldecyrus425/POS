@@ -1,12 +1,22 @@
 {
   "version": 2,
-  "dgSpecHash": "CQIwD7DbCao=",
+  "dgSpecHash": "ifohb9+Ed54=",
   "success": true,
-  "projectFilePath": "C:\\Users\\aldec\\source\\repos\\POS\\POS.Application\\POS.Application.csproj",
+  "projectFilePath": "C:\\Users\\LENOVO\\source\\repos\\POS\\POS.Application\\POS.Application.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\aldec\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.17\\microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
-    "C:\\Users\\aldec\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\10.0.8\\microsoft.extensions.dependencyinjection.abstractions.10.0.8.nupkg.sha512",
-    "C:\\Users\\aldec\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.1\\microsoft.extensions.primitives.5.0.1.nupkg.sha512"
+    "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.17\\microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
+    "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\10.0.8\\microsoft.extensions.dependencyinjection.abstractions.10.0.8.nupkg.sha512",
+    "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.1\\microsoft.extensions.primitives.5.0.1.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "message": "Problem reading the cache file C:\\Users\\LENOVO\\source\\repos\\POS\\POS.Application\\obj\\project.nuget.cache : '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 2 | BytePositionInLine: 0.",
+      "projectPath": "C:\\Users\\LENOVO\\source\\repos\\POS\\POS.Application\\POS.Application.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\LENOVO\\source\\repos\\POS\\POS.Application\\POS.Application.csproj",
+      "targetGraphs": []
+    }
+  ]
 }

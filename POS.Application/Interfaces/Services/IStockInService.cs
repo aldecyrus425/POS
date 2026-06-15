@@ -6,8 +6,8 @@ using System.Text;
 
 namespace POS.Application.Interfaces.Services
 {
-    public interface IProductUpdate
+    public interface IStockInService
     {
-        Task<ResponseDTO<ProductUpdateResponseDTO>> UpdateProductAsync(ProductUpdateRequestDTO dto);
+        Task<ResponseDTO<StockInResponseDTO>> StockInAsync(StockInRequestDTO dto);
     }
 }

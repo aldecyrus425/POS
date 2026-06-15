@@ -15,5 +15,7 @@ namespace POS.Infrastructure.Persistence
 
         public DbSet<Products> Product { get; set; }
         public DbSet<Stocks> Stock { get; set; }
+        public DbSet<Supplier> Suppliers { get; set; }
+        public DbSet<PurchaseOrders> PurchaseOrders { get; set; }
     }
-}
+}}
