@@ -29,7 +29,7 @@ namespace POS.Domain.Entities
             QuantityOnHand = quantityOnHand;
         }
 
-        public void stockIn(int Quantity)
+        public void StockIn(int Quantity)
         {
             if (Quantity <= 0)
                 throw new ArgumentException();
