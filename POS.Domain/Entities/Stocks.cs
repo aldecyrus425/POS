@@ -28,5 +28,13 @@ namespace POS.Domain.Entities
             BranchesId = branchId;
             QuantityOnHand = quantityOnHand;
         }
+
+        public void stockIn(int Quantity)
+        {
+            if (Quantity <= 0)
+                throw new ArgumentException();
+
+            QuantityOnHand += Quantity;
+        }
     }
 }

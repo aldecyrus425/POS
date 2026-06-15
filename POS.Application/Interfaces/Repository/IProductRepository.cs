@@ -7,6 +7,8 @@ namespace POS.Application.Interfaces.Repository
 {
     public interface IProductRepository
     {
-        Task AddProduct(Products product);
+        Task<Products?> GetProductByIDWithDetailsAsync(int id);
+        Task AddProductAsync(Products products);
+        Task SaveChangesAsync();
     }
 }
