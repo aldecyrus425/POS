@@ -45,6 +45,11 @@ namespace POS.Application.Services
                 }
 
                 var purchaseOrder = new PurchaseOrders(supplierId: dto.SupplierId, branchId: dto.BranchId, pONumber: GeneratePO(), status: "Received", createdBy: dto.UserId);
+
+                foreach(var item in dto.Items)
+                {
+
+                }
             }
         }
 
