@@ -9,7 +9,7 @@ namespace POS.Application.Interfaces.Repository
     {
         Task AddStocksAsync(Stocks stock);
 
-        Task<decimal> GetByProductAndBranchAsync(int productId, int branchId); 
+        Task<Stocks> GetByProductAndBranchAsync(int productId, int branchId); 
 
     }
 }
