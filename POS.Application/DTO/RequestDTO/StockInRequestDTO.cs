@@ -9,6 +9,7 @@ namespace POS.Application.DTO.RequestDTO
         public int SupplierId { get; set; }
         public int BranchId { get; set; }
         public string ReferenceNo { get; set; }
+        public string ReferenceType { get; set; }
         public DateTime DateReceived { get; set; }
         public int UserId { get; set; }
         public List<StockInItemRequestDTO> Items { get; set; }  

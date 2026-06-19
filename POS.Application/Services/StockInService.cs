@@ -50,7 +50,6 @@ namespace POS.Application.Services
                 var purchaseOrder = new PurchaseOrders(supplierId: dto.SupplierId, branchId: dto.BranchId, pONumber: GeneratePO(), status: "Received", createdBy: dto.UserId);
                 await _purchaseOrderRepo.CreatePurchaseOrderAsync(purchaseOrder);
 
-
                 foreach (var item in dto.Items)
                 {
                     var product = await _productRepo.GetProductByIDWithDetailsAsync(item.ProductId);
@@ -59,12 +58,12 @@ namespace POS.Application.Services
 
                     var stock = await _stockRepo.GetByProductAndBranchAsync(item.ProductId, dto.BranchId);
 
-                    stock.StockIn(item.Quantity);
+                    stock.ReceiveStock(item.Quantity);
 
                     var purchaseOrderItem = new PurchaseOrderItems(purchaseOrderId: purchaseOrder.PurchaseOrderID, productId: item.ProductId, quantity: item.Quantity, costPrice: product.CostPrice);
                     await _purchaseOrderItemRepo.CreatePurchaseOrderItemAsync(purchaseOrderItem);
 
-                    var stockMovement = new StockMovements(productId: item.ProductId, branchId: dto.BranchId, quantity: item.Quantity, movementType: "StockIn", referenceNo: purchaseOrder.PONumber, createdBy: dto.UserId);
+                    var stockMovement = StockMovements.CrateStockIn(productId: item.ProductId, branchId: dto.BranchId, quantity: item.Quantity, movementType: "StockIn", referenceType: dto.ReferenceType, referenceId: purchaseOrder.PurchaseOrderID, previousStock: stock.QuantityOnHand, createdBy: dto.UserId);
                     await _stockMovementRepo.CreateStockMovementAsync(stockMovement);
                 }
 
@@ -86,9 +85,23 @@ namespace POS.Application.Services
                     }
                 };
             }
+            catch (ArgumentException ex)
+            {
+                await _unitOfWork.RollbackTransactionAsync();
+                return new ResponseDTO<StockInResponseDTO>
+                {
+                    IsSuccess = false,
+                    Message = ex.Message,
+                };
+            }
             catch (Exception ex)
             {
                 await _unitOfWork.RollbackTransactionAsync();
+                return new ResponseDTO<StockInResponseDTO>
+                {
+                    IsSuccess = false,
+                    Message = $"Stock-in failed: {ex.Message}"
+                };
             }
         }
 
