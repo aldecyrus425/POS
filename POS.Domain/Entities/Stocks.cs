@@ -29,10 +29,10 @@ namespace POS.Domain.Entities
             QuantityOnHand = quantityOnHand;
         }
 
-        public void StockIn(int Quantity)
+        public void ReceiveStock(int Quantity)
         {
             if (Quantity <= 0)
-                throw new ArgumentException();
+                throw new ArgumentException("Invalid quantity");
 
             QuantityOnHand += Quantity;
         }
