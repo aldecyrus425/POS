@@ -1238,6 +1238,9 @@
             "projectReferences": {
               "C:\\Users\\LENOVO\\source\\repos\\POS\\POS.Application\\POS.Application.csproj": {
                 "projectPath": "C:\\Users\\LENOVO\\source\\repos\\POS\\POS.Application\\POS.Application.csproj"
+              },
+              "C:\\Users\\LENOVO\\source\\repos\\POS\\POS.Domain\\POS.Domain.csproj": {
+                "projectPath": "C:\\Users\\LENOVO\\source\\repos\\POS\\POS.Domain\\POS.Domain.csproj"
               }
             }
           }

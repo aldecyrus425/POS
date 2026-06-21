@@ -538,7 +538,8 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "10.0.8",
           "Microsoft.EntityFrameworkCore.SqlServer": "10.0.8",
-          "POS.Application": "1.0.0"
+          "POS.Application": "1.0.0",
+          "POS.Domain": "1.0.0"
         },
         "compile": {
           "bin/placeholder/POS.Infrastructure.dll": {}
@@ -1730,13 +1731,5 @@
         }
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\LENOVO\\source\\repos\\POS\\POS.API\\obj\\project.nuget.cache : '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 2 | BytePositionInLine: 0."
-    }
-  ]
+  }
 }

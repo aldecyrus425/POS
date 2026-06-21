@@ -18,8 +18,10 @@ namespace POS.Application.Services
         private readonly IStockRepository _stockRepo;
         private readonly IStockMovementRepository _stockMovementRepo;
         private readonly IBranchRepository _branchRepo;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly ICodeGenerator _codegen;
 
-        public StockInService(ISupplierRepository supplierRepo, IPurchaseOrdersRepository purchaseOrderRepo, IPurchaseOrderItemRepository purchaseOrderItemRepo, IProductRepository productRepo, IStockRepository stockRepo, IStockMovementRepository stockMovementRepo, IBranchRepository branchRepo)
+        public StockInService(ISupplierRepository supplierRepo, IPurchaseOrdersRepository purchaseOrderRepo, IPurchaseOrderItemRepository purchaseOrderItemRepo, IProductRepository productRepo, IStockRepository stockRepo, IStockMovementRepository stockMovementRepo, IBranchRepository branchRepo, IUnitOfWork unitOfWork, ICodeGenerator codeGenerator)
         {
             _supplierRepo = supplierRepo;
             _purchaseOrderRepo = purchaseOrderRepo;
@@ -28,10 +30,13 @@ namespace POS.Application.Services
             _stockRepo = stockRepo;
             _stockMovementRepo = stockMovementRepo;
             _branchRepo = branchRepo;
+            _unitOfWork = unitOfWork;
+            _codegen = codeGenerator;
         }
 
         public async Task<ResponseDTO<StockInResponseDTO>> StockInAsync(StockInRequestDTO dto)
         {
+            await _unitOfWork.BeginTransactionAsync();
             try
             {
                 var supplier = await _supplierRepo.GetSupplierAsync(dto.SupplierId);
@@ -44,33 +49,64 @@ namespace POS.Application.Services
                     };
                 }
 
-                var purchaseOrder = new PurchaseOrders(supplierId: dto.SupplierId, branchId: dto.BranchId, pONumber: GeneratePO(), status: "Received", createdBy: dto.UserId);
+                var purchaseOrder = new PurchaseOrders(supplierId: dto.SupplierId, branchId: dto.BranchId, pONumber: _codegen.GenerateCode(), status: "Received", createdBy: dto.UserId);
+                await _purchaseOrderRepo.CreatePurchaseOrderAsync(purchaseOrder);
 
-                foreach(var item in dto.Items)
+                foreach (var item in dto.Items)
                 {
+                    var product = await _productRepo.GetProductByIDWithDetailsAsync(item.ProductId);
+                    if (product == null)
+                        throw new Exception("Product not found.");
 
+                    var stock = await _stockRepo.GetByProductAndBranchAsync(item.ProductId, dto.BranchId);
+
+                    stock.ReceiveStock(item.Quantity);
+
+                    var purchaseOrderItem = new PurchaseOrderItems(purchaseOrderId: purchaseOrder.PurchaseOrderID, productId: item.ProductId, quantity: item.Quantity, costPrice: product.CostPrice);
+                    await _purchaseOrderItemRepo.CreatePurchaseOrderItemAsync(purchaseOrderItem);
+
+                    var stockMovement = StockMovements.CrateMovement(productId: item.ProductId, branchId: dto.BranchId, quantity: item.Quantity, movementType: "StockIn", referenceType: dto.ReferenceType, referenceId: purchaseOrder.PurchaseOrderID, previousStock: stock.QuantityOnHand, createdBy: dto.UserId);
+                    await _stockMovementRepo.CreateStockMovementAsync(stockMovement);
                 }
+
+                await _unitOfWork.SaveChangesAsync();
+                await _unitOfWork.CommitTransactionAsync();
+
+                return new ResponseDTO<StockInResponseDTO>
+                {
+                    IsSuccess = true,
+                    Message = "Stock-in successful.",
+                    Data = new StockInResponseDTO
+                    {
+                        PurchaseOrderID = purchaseOrder.PurchaseOrderID,
+                        ReferenceNo = purchaseOrder.PONumber,
+                        DateReceived = purchaseOrder.ReceivedAt ?? DateTime.Now,
+                        TotalItems = dto.Items.Count,
+                        TotalQuantity = dto.Items.Sum(i => i.Quantity),
+                        Status = purchaseOrder.Status
+                    }
+                };
+            }
+            catch (ArgumentException ex)
+            {
+                await _unitOfWork.RollbackTransactionAsync();
+                return new ResponseDTO<StockInResponseDTO>
+                {
+                    IsSuccess = false,
+                    Message = ex.Message,
+                };
+            }
+            catch (Exception ex)
+            {
+                await _unitOfWork.RollbackTransactionAsync();
+                return new ResponseDTO<StockInResponseDTO>
+                {
+                    IsSuccess = false,
+                    Message = $"Stock-in failed: {ex.Message}"
+                };
             }
         }
 
-        private string GeneratePO()
-        {
-            var random = new Random();
-
-            const string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            const string numbers = "0123456789";
-
-            // Generate 4 random letters
-            var letterPart = new string(Enumerable.Range(0, 4)
-                .Select(_ => letters[random.Next(letters.Length)])
-                .ToArray());
-
-            // Generate 4 random digits
-            var numberPart = new string(Enumerable.Range(0, 4)
-                .Select(_ => numbers[random.Next(numbers.Length)])
-                .ToArray());
-
-            return $"{letterPart}-{numberPart}";
-        }
+        
     }
 }

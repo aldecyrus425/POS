@@ -5,11 +5,8 @@ using System.Text;
 
 namespace POS.Application.Interfaces.Repository
 {
-    public interface IStockRepository
+    public interface ISaleRepository
     {
-        Task AddStocksAsync(Stocks stock);
-
-        Task<Stocks> GetByProductAndBranchAsync(int productId, int branchId); 
-
+        Task<Sales> CreatSaleAsync(Sales sale);
     }
 }
