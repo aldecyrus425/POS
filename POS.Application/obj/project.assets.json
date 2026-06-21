@@ -149,23 +149,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\aldec\\.nuget\\packages\\": {},
+    "C:\\Users\\LENOVO\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\aldec\\source\\repos\\POS\\POS.Application\\POS.Application.csproj",
+      "projectUniqueName": "C:\\Users\\LENOVO\\source\\repos\\POS\\POS.Application\\POS.Application.csproj",
       "projectName": "POS.Application",
-      "projectPath": "C:\\Users\\aldec\\source\\repos\\POS\\POS.Application\\POS.Application.csproj",
-      "packagesPath": "C:\\Users\\aldec\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\aldec\\source\\repos\\POS\\POS.Application\\obj\\",
+      "projectPath": "C:\\Users\\LENOVO\\source\\repos\\POS\\POS.Application\\POS.Application.csproj",
+      "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\LENOVO\\source\\repos\\POS\\POS.Application\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\aldec\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -182,8 +182,8 @@
           "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {
-            "C:\\Users\\aldec\\source\\repos\\POS\\POS.Domain\\POS.Domain.csproj": {
-              "projectPath": "C:\\Users\\aldec\\source\\repos\\POS\\POS.Domain\\POS.Domain.csproj"
+            "C:\\Users\\LENOVO\\source\\repos\\POS\\POS.Domain\\POS.Domain.csproj": {
+              "projectPath": "C:\\Users\\LENOVO\\source\\repos\\POS\\POS.Domain\\POS.Domain.csproj"
             }
           }
         }

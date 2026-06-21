@@ -14,7 +14,7 @@ namespace POS.Domain.Entities
         public string MovementType { get; private set; } // STOCK_IN, SALE, ADJUSTMENT, RETURN, VOID
         public decimal Quantity { get; private set; }
         public string ReferenceType { get; private set; }
-        public int ReferenceId { get; private set; }
+        public string ReferenceId { get; private set; }
         public decimal PreviousStock { get; private set; }
         public decimal NewStock { get; private set; }
         public string? Remarks { get; private set; }
@@ -24,7 +24,7 @@ namespace POS.Domain.Entities
 
         protected StockMovements() { }
 
-        public static StockMovements CrateStockIn(int productId, int branchId, decimal quantity, string movementType, string referenceType, int referenceId, decimal previousStock, int createdBy, string? remarks = null)
+        public static StockMovements CrateMovement(int productId, int branchId, decimal quantity, string movementType, string referenceType, string referenceId, decimal previousStock, int createdBy, string? remarks = null, bool isStockin = true)
         {
             if (productId <= 0)
                 throw new ArgumentException("Product ID must be greater than zero.", nameof(productId));
@@ -41,8 +41,8 @@ namespace POS.Domain.Entities
             if (string.IsNullOrWhiteSpace(referenceType))
                 throw new ArgumentException("Reference type is required.", nameof(referenceType));
 
-            if (referenceId <= 0)
-                throw new ArgumentException("Reference ID must be greater than zero.", nameof(referenceId));
+            if (!string.IsNullOrWhiteSpace(referenceId))
+                throw new ArgumentException("Reference ID invalid.", nameof(referenceId));
 
             if (createdBy <= 0)
                 throw new ArgumentException("Created By must be greater than zero.", nameof(createdBy));
@@ -50,7 +50,16 @@ namespace POS.Domain.Entities
             if (previousStock < 0)
                 throw new ArgumentException("Previous stock cannot be negative.", nameof(previousStock));
 
-            var newStock = previousStock + quantity;
+            decimal newStock = 0;
+
+            if(isStockin)
+            {
+                newStock = previousStock + quantity;
+            }
+            else
+            {
+                newStock = previousStock - quantity;
+            }
 
             return new StockMovements
             {
