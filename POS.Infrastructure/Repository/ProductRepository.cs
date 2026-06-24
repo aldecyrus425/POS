@@ -22,6 +22,14 @@ namespace POS.Infrastructure.Repository
             await _context.Product.AddAsync(product);
         }
 
+        public async Task<Products?> GetProductByBarCodeWithDetailsAsync(string barCode)
+        {
+            return await _context.Product
+                .Include(p => p.Categories)
+                .Include(p => p.Units)
+                .FirstOrDefaultAsync(p => p.Barcode == barCode);
+        }
+
         public async Task<Products?> GetProductByIDWithDetailsAsync(int id)
         {
             return await _context.Product

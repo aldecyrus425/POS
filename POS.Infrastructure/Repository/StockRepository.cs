@@ -22,7 +22,7 @@ namespace POS.Infrastructure.Repository
 
         }
 
-        public async Task<Stocks> GetByProductAndBranchAsync(int productId, int branchId)
+        public async Task<Stocks?> GetByProductAndBranchAsync(int productId, int branchId)
         {
             return await _context.Stock
                 .Where(s => s.ProductId == productId && s.BranchesId == branchId)
